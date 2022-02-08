@@ -5,7 +5,7 @@ import "fmt"
 func stringReverse(str string) string {
 	symbols := []rune(str)
 
-	for i := 0; i < int(len(symbols)/2); i++ {
+	for i := 0; i < len(symbols)/2; i++ {
 		symbols[i], symbols[len(symbols)-1-i] = symbols[len(symbols)-1-i], symbols[i]
 	}
 	return string(symbols)
