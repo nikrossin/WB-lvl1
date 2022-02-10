@@ -21,8 +21,9 @@ func mySleep(sec int) {
 }
 
 func main() {
-	time.After()
+
 	fmt.Println("start")
-	mySleep(10)
+	mySleep(1)
 	fmt.Println("stop")
+	fmt.Println(1 << 10)
 }
