@@ -9,6 +9,7 @@ var flag1 = make(chan struct{})
 var flag2 = make(chan struct{})
 var flag3 = make(chan struct{})
 
+// завершение горутины по сигналу из отдельного канала (аналогично можно проверять значение из основного канала)
 func worker1(ch <-chan int, exit <-chan int) {
 	var n int
 
@@ -27,6 +28,7 @@ func worker1(ch <-chan int, exit <-chan int) {
 	}
 }
 
+//завершение горутины по значению переменной, переданной по указателю
 func worker2(exit *bool) {
 
 	for {
@@ -40,8 +42,8 @@ func worker2(exit *bool) {
 	}
 }
 
+// завершение по закрытию канала
 func worker3(ch <-chan int) {
-
 	for val := range ch {
 
 		fmt.Println("working gor 3 -- val: ", val)
@@ -61,7 +63,7 @@ func main() {
 		ch <- i
 	}
 	exit <- 1
-	<-flag1
+	<-flag1 // ожидание завершения горутины
 
 	go worker2(&exit2)
 	time.Sleep(time.Microsecond)

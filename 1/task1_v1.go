@@ -16,6 +16,7 @@ func (h Human) printInfo() {
 	fmt.Printf("Name: %s %s, Age: %d, Country: %s", h.firstName, h.lastName, h.age, h.country)
 }
 
+//встраивание структуры Human, как анонимное поле
 type Action struct {
 	id int
 	Human

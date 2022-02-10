@@ -14,7 +14,10 @@ func main() {
 		go func(val int) {
 			ch <- val * val
 		}(val)
-		//главная горутина ожидает получения значения и складывает
+
+	}
+	//главная горутина блокируется до получения значения в канале
+	for i := 0; i < len(arr); i++ {
 		sum += <-ch
 	}
 	fmt.Fprintln(os.Stdout, sum)

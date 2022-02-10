@@ -13,11 +13,12 @@ func main() {
 	var sum int
 
 	for _, val := range arr {
-
+		//запускаем отдельные горутины на вычисления значений
 		wg.Add(1)
 		go func(val int) {
 			defer wg.Done()
 			val = val * val
+			//блокируем доступ на запись
 			m.Lock()
 			sum += val
 			m.Unlock()

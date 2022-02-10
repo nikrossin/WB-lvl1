@@ -8,7 +8,7 @@ func main() {
 
 	for _, val := range nums {
 
-		key := int(val/10) * 10
+		key := int(val/10) * 10 //получаем круглые целые числа для определения группы
 		set[key] = append(set[key], val)
 
 	}
