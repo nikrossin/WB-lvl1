@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 )
 
 type Counter struct {
-	sync.RWMutex
-	count int
+	count int64
 }
 
 //конструктор счетчика
@@ -17,16 +17,12 @@ func NewCounter() Counter {
 
 //метод инкремента
 func (c *Counter) Inc() {
-	c.Lock() //блокируем ресурс
-	defer c.Unlock()
-	c.count++
+	atomic.AddInt64(&c.count, 1) //используем атомарную операцию увеличения, которая быстрее мьютексов
 }
 
 //метод печати значения счетчика
-func (c *Counter) Get() int {
-	c.RLock() //блокируем ресурс на запись(читать можно)
-	defer c.RUnlock()
-	return c.count
+func (c *Counter) Get() int64 {
+	return atomic.LoadInt64(&c.count) //атомарная операция чтения
 }
 func main() {
 	counter := NewCounter()

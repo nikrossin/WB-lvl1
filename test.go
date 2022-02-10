@@ -1,29 +1,13 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
-
-func mySleep(sec int) {
-	ch := make(chan struct{})
-	go func() {
-		s1 := time.Now()
-		for {
-			if (s1.Add(time.Second * time.Duration(sec))).Before(time.Now()) {
-				fmt.Println("kek")
-				close(ch)
-				return
-			}
-		}
-	}()
-	<-ch
-}
+import "fmt"
 
 func main() {
-
-	fmt.Println("start")
-	mySleep(1)
-	fmt.Println("stop")
-	fmt.Println(1 << 10)
+	var nums = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+	var nums2 []int
+	fmt.Println(cap(nums), len(nums))
+	nums2 = nums[2:6]
+	nums[2] = 5
+	fmt.Println(nums2)
+	fmt.Println(cap(nums2), len(nums2))
 }

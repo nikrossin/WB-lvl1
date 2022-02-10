@@ -7,10 +7,12 @@ import (
 
 type BigNum big.Int
 
+//конструктор
 func NewBigNum(num int64) *BigNum {
 	return (*BigNum)(big.NewInt(num))
 }
 
+//методы арифметических операций
 func (n *BigNum) Add(m *BigNum) *BigNum {
 	var newNum big.Int
 	return (*BigNum)(newNum.Add((*big.Int)(n), (*big.Int)(m)))

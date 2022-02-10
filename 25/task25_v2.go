@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+//используем готовую функцию, которая возвращает канал
 func mySleep(sec int) {
 	<-time.After(time.Duration(sec) * time.Second)
 

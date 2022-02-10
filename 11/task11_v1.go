@@ -5,7 +5,7 @@ import "fmt"
 func cross(arr1 []int, arr2 []int) []int {
 	var cross = make(map[int]int)
 	var arrCross []int
-
+	//ключ - значение массива 1, значени мапы - количество значений в массиве 1
 	for _, val := range arr1 {
 		if _, ok := cross[val]; ok {
 			cross[val]++
@@ -13,6 +13,8 @@ func cross(arr1 []int, arr2 []int) []int {
 			cross[val] = 1
 		}
 	}
+	//если такое значение существует в мапе, декриментируем значение и записывает элемент как пересечение
+	//если в первом массиве две 5, а во втором одна 5, в пересечение только одна пятерка
 	for _, val := range arr2 {
 		if _, ok := cross[val]; ok {
 			if cross[val] != 0 {

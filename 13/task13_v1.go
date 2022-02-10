@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func swap(a *int, b *int) {
-	*a, *b = *b, *a
+	*a, *b = *b, *a //используя конструкцию в go
 }
 
 func main() {

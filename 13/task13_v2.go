@@ -3,6 +3,7 @@ package main
 import "fmt"
 
 func swap(a *int, b *int) {
+	//используя математические вычисления
 	*a = *a + *b
 	*b = *a - *b
 	*a = *a - *b

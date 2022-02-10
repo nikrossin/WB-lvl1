@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func stringReverse(str string) string {
-	symbols := []rune(str)
+	symbols := []rune(str) //символы могут быть в юникод
 
 	for i := 0; i < len(symbols)/2; i++ {
 		symbols[i], symbols[len(symbols)-1-i] = symbols[len(symbols)-1-i], symbols[i]

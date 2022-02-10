@@ -9,14 +9,17 @@ type MySet struct {
 	slice []string
 }
 
+//добавление элемента в множество
 func (s *MySet) Append(elem string) {
 	s.slice = append(s.slice, elem)
 }
 
+//создание множества
 func NewSet() MySet {
 	return MySet{[]string{}}
 }
 
+//удаление элемента из множества
 func (s *MySet) Delete(elem string) error {
 	for index, val := range s.slice {
 		if val == elem {

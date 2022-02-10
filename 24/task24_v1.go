@@ -10,10 +10,12 @@ type Point struct {
 	y float64
 }
 
+//конструктор
 func NewPoint(x float64, y float64) *Point {
 	return &Point{x, y}
 }
 
+//метод определения расстояния
 func (p1 *Point) Distance(p2 *Point) float64 {
 	return math.Sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y))
 }

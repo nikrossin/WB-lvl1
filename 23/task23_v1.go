@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func deleteElem(arr []int, i int) []int {
-	arr = append(arr[:i], arr[i+1:]...)
+	arr = append(arr[:i], arr[i+1:]...) //к срезу слайса добавляем элементы после удаленного элемента
 	return arr
 }
 
