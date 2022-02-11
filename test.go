@@ -2,12 +2,19 @@ package main
 
 import "fmt"
 
+func update(p *int) {
+	fmt.Println(*p)
+	b := 2
+	p = &b
+	fmt.Println(*p)
+}
+
 func main() {
-	var nums = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
-	var nums2 []int
-	fmt.Println(cap(nums), len(nums))
-	nums2 = nums[2:6]
-	nums[2] = 5
-	fmt.Println(nums2)
-	fmt.Println(cap(nums2), len(nums2))
+	var (
+		a = 1
+		p = &a
+	)
+	fmt.Println(*p)
+	update(p)
+	fmt.Println(*p)
 }
