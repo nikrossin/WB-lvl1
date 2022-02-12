@@ -1,14 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 type Test struct {
 	id *int
 }
 
 func main() {
-	p := new([]int)
-	a := make([]int, 0)
-	var b []int
-	fmt.Println(cap(*p), len(*p), cap(a), len(a), cap(b), len(b))
+	wg := sync.WaitGroup{}
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(wg sync.WaitGroup, i int) {
+			fmt.Println(i)
+			wg.Done()
+		}(wg, i)
+	}
+	wg.Wait()
+	fmt.Println("exit")
 }
